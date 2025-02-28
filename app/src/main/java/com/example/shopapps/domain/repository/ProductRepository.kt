@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
+    fun getPagedProducts(): Flow<PagingData<ProductItem>>
+
     //Authentication
     suspend fun getSession(): Flow<LoginResponseDomain>
 

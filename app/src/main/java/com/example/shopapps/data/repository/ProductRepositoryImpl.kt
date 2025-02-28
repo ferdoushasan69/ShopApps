@@ -1,6 +1,7 @@
 package com.example.shopapps.data.repository
 
 
+import ProductPagingSource
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.location.Geocoder
@@ -63,7 +64,16 @@ class ProductRepositoryImpl @Inject constructor(
     private val fusedLocationProviderClient: FusedLocationProviderClient,
     private val geocoder: Geocoder
 ) : ProductRepository {
-
+    override fun getPagedProducts(): Flow<PagingData<ProductItem>> {
+        val pager = Pager(
+            config = PagingConfig(
+                pageSize = 20,  // Specify the page size
+                enablePlaceholders = false // Disables placeholders for better performance
+            ),
+            pagingSourceFactory = { ProductPagingSource(apiService) } // Use the ProductPagingSource
+        )
+        return pager.flow // Return the flow of paginated data
+    }
     override suspend fun getSession(): Flow<LoginResponseDomain> {
         return flow {
             val currentUser = firebaseManager.getCurrentUser()

@@ -12,6 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -33,7 +34,10 @@ fun ForYouScreen(
     viewModel: ForYouViewModel= hiltViewModel()
 ) {
 
-    viewModel.uiState.observeAsState(initial = Resource.Loading).value.let { uiState->
+   val uiState =  viewModel.uiState.observeAsState(initial = Resource.Loading).value
+    LaunchedEffect(Unit) {
+        viewModel.getProductByCategory("women's clothing", 6)
+    }
         when(uiState){
             is Resource.Error -> {
                 Box(modifier = Modifier.fillMaxSize()){
@@ -81,5 +85,5 @@ fun ForYouScreen(
                 }
             }
         }
-    }
+
 }

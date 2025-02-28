@@ -49,17 +49,8 @@ fun TabCategory(
     scope: CoroutineScope,
     navigateToDetail: (Int) -> Unit
 ) {
-    val category by remember {
-        mutableStateOf(
-            listOf(
-                "All",
-                "Men",
-                "Women",
-                "Electronics",
-                "Jewelery",
-            )
-        )
-    }
+    val category = listOf("All", "Men", "Women", "Electronics", "Jewelery")
+
 
     val pagerState = rememberPagerState(pageCount = { category.size })
     val coroutineScope = rememberCoroutineScope()
@@ -130,8 +121,6 @@ fun TabCategory(
                             height = heightContent,
                             count = count,
                             navigateToDetail = navigateToDetail,
-                            snackBarHostState = snackBarHostState,
-                            scope = scope
                         )
                     }
                     1 -> {

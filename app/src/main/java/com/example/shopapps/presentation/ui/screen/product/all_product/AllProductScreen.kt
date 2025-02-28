@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +18,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -39,11 +41,12 @@ fun AllProductScreen(
     count: Int = 4,
     navigateToDetail: (Int) -> Unit,
     allProductViewModel: AllProductViewModel = hiltViewModel(),
-    scope: CoroutineScope,
-    snackBarHostState: SnackbarHostState
 ) {
     val context = LocalContext.current
-    val pageProduct  = allProductViewModel.pagedProducts.collectAsLazyPagingItems()
+    val scope = rememberCoroutineScope()
+    val snackBarHostState = remember { SnackbarHostState() }
+
+    val pageProduct = allProductViewModel.pagedProducts.collectAsLazyPagingItems()
     LazyVerticalGrid(
         columns = GridCells.Adaptive(196.dp),
         modifier = Modifier.heightIn(min = gridHeight, max = gridHeight)
@@ -66,7 +69,7 @@ fun AllProductScreen(
                                 message = "Product added to cart",
                             )
                         }
-                        Toast.makeText(context,"Product Added to cart",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Product Added to cart", Toast.LENGTH_SHORT).show()
                         allProductViewModel.addToCart(product)
 
                     }
@@ -74,17 +77,20 @@ fun AllProductScreen(
             }
         }
     }
-    when(pageProduct.loadState.refresh) {
+    when (val refreshState = pageProduct.loadState.refresh) {
         is LoadState.Error -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                val error = (pageProduct.loadState.append as LoadState.Error).error
-                Text(error.toString())
+                Text(
+                    refreshState.error.message ?: "en occur error",
+                    modifier = Modifier.padding(15.dp)
+                )
             }
         }
 
         LoadState.Loading -> {
             Box(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.background)
                     .height(height)
             ) {

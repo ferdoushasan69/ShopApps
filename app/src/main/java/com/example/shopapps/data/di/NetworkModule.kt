@@ -2,7 +2,6 @@ package com.example.shopapps.data.di
 
 import com.example.shopapps.data.remote.ApiService
 import com.example.data.util.BASE_URL
-import com.example.shopapps.data.pagination.ProductPagingSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,10 +31,5 @@ object NetworkModule {
             .create(ApiService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideProductPagination(apiService: ApiService) : ProductPagingSource{
-        return ProductPagingSource(apiService)
-    }
 
-}
+    }
