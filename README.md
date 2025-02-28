@@ -1,9 +1,21 @@
 # ShopApps
-![home_screen](https://g![Screenshot_20250228_191333]()
-ithub.com/user-attachments/assets/7dd5ff8f-d943-4b3a-b374-8475f8a92185)
 
-<p align="center">
+<p>
+
   <img src="https://github.com/user-attachments/assets/e442e7f2-64db-4470-94fd-c778fafe2a02" width="30%" />
-  <img src="assets/images/image2.png" width="30%" />
-  <img src="assets/images/image3.png" width="30%" />
+  <img src="https://github.com/user-attachments/assets/ab73222d-8cd1-4933-bf4d-be1d5cd3ae58" width="30%" />
+  <img src="https://github.com/user-attachments/assets/6a073f33-9329-4ced-8700-733d20937ae0" width="30%" />
+  <img src="https://github.com/user-attachments/assets/5117c396-d43e-4981-a68f-76f26bab877e" width="30%" />
+  <img src="https://github.com/user-attachments/assets/0bec914f-1136-4423-b3a8-0cf7192d6013" width="30%" />
 </p>
+<p>
+
+  <img src="https://github.com/user-attachments/assets/537587c0-20d5-4ca1-9e2d-6eeb3cce5b73" width="30%" />
+  <img src="https://github.com/user-attachments/assets/352a2285-8b01-43e0-9cea-472cb71f2b62" width="30%" />
+  <img src="https://github.com/user-attachments/assets/39bfc767-833c-4e31-bb77-8442181c43f4" width="30%" />
+  <img src="https://github.com/user-attachments/assets/943db724-293e-4671-b27e-6b07d78df54c" width="30%" />
+  <img src="https://github.com/user-attachments/assets/a3961f35-ec8f-48e0-b0e7-e1d623510321" width="30%" />
+</p>
+
+![checkout_screen]()
+![notification_screen]()
