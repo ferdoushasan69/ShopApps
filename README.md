@@ -17,5 +17,4 @@
   <img src="https://github.com/user-attachments/assets/a3961f35-ec8f-48e0-b0e7-e1d623510321" width="30%" />
 </p>
 
-![checkout_screen]()
-![notification_screen]()
+
