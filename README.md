@@ -1,5 +1,34 @@
 # ShopApps
+🛒 E-Commerce Android App (Jetpack Compose) 🚀
+📌 Overview
+This is a modern, high-performance E-commerce Android app built with Jetpack Compose and follows Clean Architecture & MVVM for maintainability. The app allows users to browse products, add items to a cart, and authenticate using Firebase Sign-in/Sign-up.
 
+🛠 Tech Stack & Features
+🔹 Architecture & Design
+MVVM (Model-View-ViewModel)
+Clean Architecture
+Repository Pattern
+Dependency Injection with Dagger Hilt
+🔹 Backend & API Integration
+Retrofit 2 for network calls
+Room Database for offline storage
+Jetpack Paging 3 for efficient product listing
+🔹 User Authentication
+Firebase Authentication (Google, Email/Password)
+🔹 UI & UX (Jetpack Compose)
+LazyColumn / LazyGrid for efficient product listing
+Material 3 Design for a modern look
+Smooth animations & transitions
+🔹 State Management & Performance
+ViewModel & LiveData for UI updates
+Coroutines & Flow for async operations
+🔹 Other Features
+✅ Add products to cart & wishlist
+✅ Search & filter products
+✅ Dark Mode Support 🌙
+✅ Secure login & authentication
+
+****
 <p>
 
   <img src="https://github.com/user-attachments/assets/e442e7f2-64db-4470-94fd-c778fafe2a02" width="30%" />
