@@ -1,10 +1,13 @@
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -33,16 +37,18 @@ fun AddressScreen(
     var address by remember { mutableStateOf("") }
         Column(
             modifier = Modifier
-                .padding(10.dp),
+                .padding(20.dp)
+                .background(MaterialTheme.colorScheme.inverseOnSurface)
+                .clip(RoundedCornerShape(10.dp)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             OutlinedTextField(onValueChange = { name = it }, value = name, maxLines = 1, placeholder = {
                 Text("Name")
-            })
+            }, modifier = Modifier.padding(10.dp))
             OutlinedTextField(onValueChange = { address = it }, value = address, maxLines = 1, placeholder = {
                 Text("Address")
-            })
+            },modifier = Modifier.padding(10.dp))
             Button(onClick = {
                 if (name.isNotEmpty() && address.isNotEmpty()) {
                     onConfirm(name,address)

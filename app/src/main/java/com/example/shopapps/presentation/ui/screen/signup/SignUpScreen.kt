@@ -15,6 +15,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -235,7 +236,8 @@ fun SignUpContent(
         ) {
             Row(
                 verticalAlignment = Alignment.Bottom,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
+                horizontalArrangement = Arrangement.Center
             ) {
                 Text(
                     text = stringResource(R.string.app_name),
@@ -244,7 +246,7 @@ fun SignUpContent(
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Image(
-                    painter = painterResource(R.drawable.icon_google),
+                    painter = painterResource(R.drawable.logo),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(start = 8.dp)

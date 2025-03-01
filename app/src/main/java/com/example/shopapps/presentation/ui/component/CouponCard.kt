@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.shopapps.presentation.ui.theme.primary
 
 @Composable
 fun CouponCard(
@@ -65,7 +66,7 @@ fun CouponCard(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(gradient)
+                .background(primary)
         ) {
             Text(
                 text = discount,
@@ -116,25 +117,7 @@ fun CouponCard(
                     .offset(x = 10.dp)
             )
 
-            Canvas(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                val dashWidth = 7.dp.toPx()
-                val dashGap = 1.dp.toPx()
-                val y = size.height / 2
-                var currentX = 0f
 
-                while (currentX < size.width) {
-                    val endX = (currentX + dashWidth).coerceAtMost(size.width)
-                    drawLine(
-                        color = Color.White,
-                        start = Offset(currentX + 9, y),
-                        end = Offset(endX, y),
-                        strokeWidth = 2.dp.toPx()
-                    )
-                    currentX += dashWidth + dashGap
-                }
-            }
         }
     }
 
@@ -168,7 +151,7 @@ fun CouponCard2(
                 modifier = Modifier
                     .fillMaxHeight()
                     .width(80.dp)
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(primary)
                     .align(Alignment.CenterStart),
                 contentAlignment = Alignment.Center
             ) {

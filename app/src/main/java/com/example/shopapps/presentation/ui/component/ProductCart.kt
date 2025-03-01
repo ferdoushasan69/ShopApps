@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import coil3.compose.AsyncImage
 import com.example.shopapps.R
+import com.example.shopapps.presentation.ui.theme.primary
 
 @Composable
 fun ProductCart(
@@ -154,7 +155,7 @@ fun ProductCard2(
                         filCart.value = true
                         }
                         .background(
-                            color = MaterialTheme.colorScheme.primary,
+                            color = primary,
                             shape = RoundedCornerShape(10.dp)
                         )
                         .padding(6.dp)
