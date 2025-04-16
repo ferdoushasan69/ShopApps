@@ -19,8 +19,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,6 +49,7 @@ import com.example.shopapps.presentation.ui.screen.notification.NotificationScre
 import com.example.shopapps.presentation.ui.screen.profile.ProfileScreen
 import com.example.shopapps.presentation.ui.screen.search_product.ProductSearchScreen
 import com.example.shopapps.presentation.ui.screen.signup.SignUpScreen
+import com.example.shopapps.presentation.ui.screen.success.SuccessPaymentScreen
 import com.example.shopapps.presentation.ui.screen.welcome.WelcomeScreen
 import com.example.shopapps.presentation.ui.theme.iconColor
 
@@ -96,6 +101,7 @@ fun Navigation(authViewModel: AuthViewModel = hiltViewModel()) {
     val backStackEntry by navController.currentBackStackEntryFlow.collectAsState(null)
     val currentState = backStackEntry?.destination?.route
     val navBarState = screen.indexOfFirst { it::class.qualifiedName == currentState }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
@@ -105,7 +111,20 @@ fun Navigation(authViewModel: AuthViewModel = hiltViewModel()) {
                         NavigationBarItem(
                             selected = navBarState == index,
                             onClick = {
-                                navController.navigate(screen[index])
+                                val currentRoute = navController.currentDestination?.route
+                                val targetRoute = screen[index]::class.qualifiedName
+
+                                if (currentRoute != targetRoute) {
+                                    navController.navigate(screen[index]) {
+                                        popUpTo(navController.graph.startDestinationRoute ?: Home::class.qualifiedName!!) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+
+                            
                             },
                             colors = NavigationBarItemDefaults.colors(
                                 selectedIconColor = iconColor,
@@ -228,11 +247,13 @@ fun Navigation(authViewModel: AuthViewModel = hiltViewModel()) {
                 CheckOutScreen(
                     navHostController = navController,
 
-                )
+                    )
 
             }
 
-
+            composable < Success>{
+                SuccessPaymentScreen(navController = navController)
+            }
 
 
         }

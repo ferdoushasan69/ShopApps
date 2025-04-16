@@ -56,6 +56,7 @@ import com.example.shopapps.domain.model.Cart
 import com.example.shopapps.presentation.ui.component.CartItem
 import com.example.shopapps.presentation.ui.navigation.CheckOut
 import com.example.shopapps.presentation.ui.navigation.ProductDetails
+import com.example.shopapps.presentation.ui.theme.primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -254,7 +255,7 @@ fun CartContent(
                     shape = RoundedCornerShape(10.dp),
                     onClick = addOrder,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
+                        containerColor = primary
                     )
                 ) {
                     Text(

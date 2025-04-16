@@ -131,6 +131,10 @@ dependencies {
     implementation(libs.stripe.android)
     implementation (libs.stripe.java)
 
+    implementation ("com.github.kittinunf.fuel:fuel:2.3.1") // For basic HTTP requests
+    implementation ("com.github.kittinunf.fuel:fuel-json:2.3.1") // For JSON response handling
+    implementation ("com.airbnb.android:lottie-compose:6.6.6")
+
 
 
 

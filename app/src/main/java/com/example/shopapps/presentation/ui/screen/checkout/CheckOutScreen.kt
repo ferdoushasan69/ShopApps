@@ -34,6 +34,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -88,6 +89,11 @@ import com.example.shopapps.presentation.ui.component.CouponItem
 import com.example.shopapps.presentation.ui.component.CouponItemSelected
 import com.example.shopapps.presentation.ui.component.ShippingItem
 import com.example.shopapps.presentation.ui.navigation.Home
+import com.example.shopapps.presentation.ui.navigation.Success
+import com.example.shopapps.presentation.ui.theme.primary
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.httpPost
+import com.github.kittinunf.fuel.json.responseJson
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetContract
@@ -97,6 +103,7 @@ import com.stripe.android.paymentsheet.rememberPaymentSheet
 import com.stripe.android.paymentsheet.rememberPaymentSheetFlowController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.github.kittinunf.result.Result
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -212,9 +219,7 @@ fun CheckOutScreen(
                 isButtonEnabled = true,
                 onChoosePayment = {
                     scope.launch {
-                        delay(2000)
-                        navHostController.navigate(Home)
-                        isLoading = true
+                        navHostController.navigate(Success)
                     }
                     viewModel.addNotification(
                         message = "Your Order Has been placed",
@@ -582,7 +587,7 @@ fun CartItemDialog(
                         shape = RoundedCornerShape(10.dp),
                         onClick = onChoosePayment,
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary
+                            containerColor = primary
                         )
                     ) {
                         Text(
@@ -630,7 +635,7 @@ fun CartItemDialog(
         onConfirmationCoupon: () -> Unit
     ) {
         var temporarySelectedCouponId by rememberSaveable { mutableStateOf(selectedCouponId) }
-
+        val context = LocalContext.current
         Box(
             modifier = modifier.background(
                     color = MaterialTheme.colorScheme.background
@@ -665,13 +670,33 @@ fun CartItemDialog(
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
                     onClick = {
+                        val isAddressEmpty = true // example placeholder
+
+                        if (temporarySelectedCouponId == null && isAddressEmpty) {
+                            Toast.makeText(
+                                context,
+                                "Please select both coupon and address",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else if (temporarySelectedCouponId == null) {
+                            Toast.makeText(
+                                context,
+                                "Please select a coupon",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else if (isAddressEmpty) {
+                            Toast.makeText(
+                                context,
+                                "Please select an address",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
                         onChoose(temporarySelectedCouponId?:0)
                         onConfirmationCoupon()
-                        
+
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
-                    )
+                    colors = ButtonDefaults.elevatedButtonColors(containerColor = primary)
                 ) {
                     Text(
                         text = "Confirmation", fontSize = 14.sp, color = Color.White
@@ -783,4 +808,6 @@ fun CartItemDialog(
         }
         return finalPrice
     }
+
+
 

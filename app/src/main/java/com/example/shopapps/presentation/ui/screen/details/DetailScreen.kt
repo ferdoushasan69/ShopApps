@@ -286,7 +286,7 @@ fun DetailsContent(
                     shape = RoundedCornerShape(10.dp),
                     onClick = addToCart,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
+                        containerColor = primary
                     )
                 ){
                     Row(

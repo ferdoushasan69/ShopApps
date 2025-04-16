@@ -41,3 +41,6 @@ data object Category
 
 @Serializable
 data object CheckOut
+
+@Serializable
+data object Success
