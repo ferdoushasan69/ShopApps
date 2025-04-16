@@ -1,4 +1,4 @@
-![Screenshot_20250416_133856](https://github.com/user-attachments/assets/d7c95606-8fa7-47b7-b3f2-dc7e03bcb8dc)# ShopApps
+# ShopApps
 A feature-rich, high-performance E-Commerce Android application built with Jetpack Compose, following Clean Architecture and the MVVM pattern for scalability and maintainability. The app enables users to browse and search products, manage a shopping cart and wishlist, and securely authenticate using Firebase.
 
 🛠 Tech Stack & Features
@@ -49,14 +49,11 @@ Coroutines + Flow for asynchronous operations
 
 
 
-
-
-
-
   <img src="https://github.com/user-attachments/assets/32be925d-50c2-4fbb-a157-b08e74899d80" width="30%" />
   <img src="https://github.com/user-attachments/assets/a06399f9-f14b-4321-8cbf-063d032d4873" width="30%" />
-  <img src="https://github.com/user-attachments/assets/6a073f33-9329-4ced-8700-733d20937ae0" width="30%" />
-  <img src="https://github.com/user-attachments/assets/0bec914f-1136-4423-b3a8-0cf7192d6013" width="30%" />
+  <img src="https://github.com/user-attachments/assets/849c2a7c-d6a7-4091-a0a0-271f33f9a12d" width="30%" />
+  <img src="https://github.com/user-attachments/assets/a8a031ed-3a0a-40ea-9668-b10d93d3b560" width="30%" />
+  <img src="https://github.com/user-attachments/assets/b23abb1c-c641-4db0-8ac6-33078a39f421" width="30%" />
 </p>
 <p>
 
