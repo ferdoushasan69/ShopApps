@@ -58,7 +58,7 @@ Coroutines + Flow for asynchronous operations
 <p>
   
   <img src="https://github.com/user-attachments/assets/a8a031ed-3a0a-40ea-9668-b10d93d3b560" width="30%" />
-  <img src="https://github.com/user-attachments/assets/b23abb1c-c641-4db0-8ac6-33078a39f421" width="30%" />
+  <img src="https://github.com/user-attachments/assets/eaf3d5c2-c807-448f-9b69-0875bd4ced7b" width="30%" />
   <img src="https://github.com/user-attachments/assets/537587c0-20d5-4ca1-9e2d-6eeb3cce5b73" width="30%" />
 </p>
 <p>
