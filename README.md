@@ -1,50 +1,76 @@
-# ShopApps
-A feature-rich, high-performance E-Commerce Android application built with Jetpack Compose, following Clean Architecture and the MVVM pattern for scalability and maintainability. The app enables users to browse and search products, manage a shopping cart and wishlist, and securely authenticate using Firebase.
+🛍️ ShopApps
+A feature-rich, high-performance E-Commerce Android Application built using Jetpack Compose, following Clean Architecture and the MVVM pattern for scalability, modularity, and easy maintenance.
 
-🛠 Tech Stack & Features
+🚀 Core Features
+🧭 Onboarding Flow
+Smooth intro screens guiding users through app features.
+
+🔐 Authentication
+
+Firebase Authentication (Email/Password + Google Sign-In)
+
+Secure login and signup screens
+
+🏠 Main App Screens
+
+Home, Favorite, Search, and Custom Coupon Screens
+
+Add to Cart and Checkout flow
+
+Coupon system with custom UI/UX
+
+Success screen after payment
+
+Local notifications after successful purchase with notification details
+
+🛠 Tech Stack & Architecture
 🔹 Architecture & Design
 MVVM (Model–View–ViewModel)
 
-Clean Architecture for modular, testable code
+Clean Architecture (Separation of concerns)
 
-Repository Pattern for data handling
+Repository Pattern
 
 Dependency Injection using Dagger Hilt
 
-🔹 Backend & API Integration
-Retrofit 2 for seamless network communication
+🔹 Networking & Database
+Retrofit 2 for API communication
 
-Room Database for local/offline data storage
+RoomDB for local storage
 
-Jetpack Paging 3 for efficient product list loading
+Custom Pagination (Jetpack Paging 3 style)
 
-🔹 User Authentication
-Firebase Authentication
+Firebase Auth for secure sign-in
 
-Google Sign-In
+🔹 UI & UX (Jetpack Compose)
+LazyColumn / LazyGrid for smooth rendering
 
-Email/Password Login
+Material 3 Design System
 
-🔹 UI & UX (Built with Jetpack Compose)
-LazyColumn / LazyGrid for smooth and efficient rendering
+Lottie Animations, Transitions, Modern UI
 
-Material 3 Design system for a modern, elegant interface
+Dark Mode support 🌙
 
-Animations and Transitions for enhanced user experience
+🔹 State & Performance
+LiveData, StateFlow, ViewModel
 
-🔹 State Management & Performance
-ViewModel + LiveData for reactive UI updates
+Kotlin Coroutines + Flow for async work
 
-Coroutines + Flow for asynchronous operations
+Coil 3 for image loading
 
-🎯 Key Features
-✅ Add products to Cart and Wishlist
+🎯 Highlighted Features
+✅ Browse & search products
+✅ Add to cart / favorite
+✅ Coupon application
+✅ Checkout with payment success screen
+✅ Show post-purchase local notifications
+✅ Modern Jetpack Compose UI
+✅ Firebase-based authentication
+✅ Offline caching with Room
+✅ Pagination for product list
+✅ Clean code with scalability in mind
 
-✅ Search and Filter product listings
 
-✅ Dark Mode support 🌙
-
-✅ Secure Login with Firebase Authentication
 <p>
   <img src="https://github.com/user-attachments/assets/42968d71-14ea-4f6e-b27e-9340542252e1" width="30%" />
   <img src="https://github.com/user-attachments/assets/9165bc9e-1b95-424e-90e6-7650a41b4332" width="30%" />
