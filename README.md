@@ -1,34 +1,50 @@
 # ShopApps
-🛒 E-Commerce Android App (Jetpack Compose) 🚀
-📌 Overview
-This is a modern, high-performance E-commerce Android app built with Jetpack Compose and follows Clean Architecture & MVVM for maintainability. The app allows users to browse products, add items to a cart, and authenticate using Firebase Sign-in/Sign-up.
+A feature-rich, high-performance E-Commerce Android application built with Jetpack Compose, following Clean Architecture and the MVVM pattern for scalability and maintainability. The app enables users to browse and search products, manage a shopping cart and wishlist, and securely authenticate using Firebase.
 
 🛠 Tech Stack & Features
 🔹 Architecture & Design
-MVVM (Model-View-ViewModel)
-Clean Architecture
-Repository Pattern
-Dependency Injection with Dagger Hilt
-🔹 Backend & API Integration
-Retrofit 2 for network calls
-Room Database for offline storage
-Jetpack Paging 3 for efficient product listing
-🔹 User Authentication
-Firebase Authentication (Google, Email/Password)
-🔹 UI & UX (Jetpack Compose)
-LazyColumn / LazyGrid for efficient product listing
-Material 3 Design for a modern look
-Smooth animations & transitions
-🔹 State Management & Performance
-ViewModel & LiveData for UI updates
-Coroutines & Flow for async operations
-🔹 Other Features
-✅ Add products to cart & wishlist
-✅ Search & filter products
-✅ Dark Mode Support 🌙
-✅ Secure login & authentication
+MVVM (Model–View–ViewModel)
 
-****
+Clean Architecture for modular, testable code
+
+Repository Pattern for data handling
+
+Dependency Injection using Dagger Hilt
+
+🔹 Backend & API Integration
+Retrofit 2 for seamless network communication
+
+Room Database for local/offline data storage
+
+Jetpack Paging 3 for efficient product list loading
+
+🔹 User Authentication
+Firebase Authentication
+
+Google Sign-In
+
+Email/Password Login
+
+🔹 UI & UX (Built with Jetpack Compose)
+LazyColumn / LazyGrid for smooth and efficient rendering
+
+Material 3 Design system for a modern, elegant interface
+
+Animations and Transitions for enhanced user experience
+
+🔹 State Management & Performance
+ViewModel + LiveData for reactive UI updates
+
+Coroutines + Flow for asynchronous operations
+
+🎯 Key Features
+✅ Add products to Cart and Wishlist
+
+✅ Search and Filter product listings
+
+✅ Dark Mode support 🌙
+
+✅ Secure Login with Firebase Authentication
 <p>
 
   <img src="https://github.com/user-attachments/assets/e442e7f2-64db-4470-94fd-c778fafe2a02" width="30%" />
