@@ -46,9 +46,11 @@ Coroutines + Flow for asynchronous operations
 
 ✅ Secure Login with Firebase Authentication
 <p>
-
-
-
+  <img src="https://github.com/user-attachments/assets/42968d71-14ea-4f6e-b27e-9340542252e1" width="30%" />
+  <img src="https://github.com/user-attachments/assets/9165bc9e-1b95-424e-90e6-7650a41b4332" width="30%" />
+  <img src="https://github.com/user-attachments/assets/1a3f3414-f74a-4f02-9bd2-e6061dcce1cc" width="30%" />
+</p>
+<p>
   <img src="https://github.com/user-attachments/assets/32be925d-50c2-4fbb-a157-b08e74899d80" width="30%" />
   <img src="https://github.com/user-attachments/assets/a06399f9-f14b-4321-8cbf-063d032d4873" width="30%" />
   <img src="https://github.com/user-attachments/assets/849c2a7c-d6a7-4091-a0a0-271f33f9a12d" width="30%" />
