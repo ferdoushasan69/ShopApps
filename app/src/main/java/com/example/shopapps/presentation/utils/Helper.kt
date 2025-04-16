@@ -6,6 +6,8 @@ import androidx.compose.ui.unit.sp
 
 object DialogHelper {
 
+    const val NOTIFICATION_ID = "NOTIFICATION_ID"
+
     @Composable
     fun ShowDialog(
         title: String?,

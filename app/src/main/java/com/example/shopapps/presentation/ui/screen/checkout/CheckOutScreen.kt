@@ -1,10 +1,11 @@
 package com.example.shopapps.presentation.ui.screen.checkout
 
 import AddressScreen
+import android.Manifest
+
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -70,9 +71,15 @@ import androidx.compose.ui.text.font.lerp
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import coil3.Bitmap
+import coil3.ImageLoader
+import coil3.request.ImageRequest
+import coil3.request.allowHardware
 import com.example.shopapps.BuildConfig
 import com.example.shopapps.R
 import com.example.shopapps.data.model.Coupon
@@ -81,31 +88,24 @@ import com.example.shopapps.data.model.Shipping
 import com.example.shopapps.domain.model.Cart
 import com.example.shopapps.domain.model.Order
 import com.example.shopapps.domain.model.UserLocation
+import com.example.shopapps.presentation.notification.NotificationService
 import com.example.shopapps.presentation.ui.common.Resource
 import com.example.shopapps.presentation.ui.component.AddressItemScreen
 import com.example.shopapps.presentation.ui.component.CartItemMini
 import com.example.shopapps.presentation.ui.component.CouponInactiveSelected
 import com.example.shopapps.presentation.ui.component.CouponItem
 import com.example.shopapps.presentation.ui.component.CouponItemSelected
+import com.example.shopapps.presentation.ui.component.NotificationItem
 import com.example.shopapps.presentation.ui.component.ShippingItem
-import com.example.shopapps.presentation.ui.navigation.Home
 import com.example.shopapps.presentation.ui.navigation.Success
 import com.example.shopapps.presentation.ui.theme.primary
-import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.httpPost
-import com.github.kittinunf.fuel.json.responseJson
-import com.stripe.android.PaymentConfiguration
-import com.stripe.android.paymentsheet.PaymentSheet
-import com.stripe.android.paymentsheet.PaymentSheetContract
-import com.stripe.android.paymentsheet.PaymentSheetResult
-import com.stripe.android.paymentsheet.PaymentSheetResultCallback
-import com.stripe.android.paymentsheet.rememberPaymentSheet
-import com.stripe.android.paymentsheet.rememberPaymentSheetFlowController
-import kotlinx.coroutines.delay
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 import kotlinx.coroutines.launch
-import com.github.kittinunf.result.Result
 
-@OptIn(ExperimentalMaterial3Api::class)
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
 fun CheckOutScreen(
     navHostController: NavHostController,
@@ -131,6 +131,7 @@ fun CheckOutScreen(
     } ?: 0.0
 
     val selectedCoupon = selectedCouponById?.let { couponItem[it] }
+    val notification = viewModel.notifications.observeAsState(emptyList())
 
     val finalPrice = selectedCoupon?.let {
         calculateFinalPrice(
@@ -139,10 +140,17 @@ fun CheckOutScreen(
     }
 
 
-
-
-
         Spacer(modifier = Modifier.height(16.dp))
+
+    val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
+
+    val notificationService = NotificationService(context)
+
+    LaunchedEffect(true) {
+        if (!postNotificationPermission.status.isGranted){
+            postNotificationPermission.launchPermissionRequest()
+        }
+    }
 
     if (isSheetShippingOpen) {
         BottomSheetShippingOpen(onDismiss = {
@@ -157,6 +165,7 @@ fun CheckOutScreen(
                 isSheetShippingOpen = false
             })
     }
+
 
     if (isSheetCouponOpen) {
         BottomSheetCouponOpen(onDismiss = {
@@ -173,7 +182,9 @@ fun CheckOutScreen(
     var isLoading by remember { mutableStateOf(false) }
 
 
-
+var title by remember { mutableStateOf("") }
+    var img by remember { mutableStateOf("") }
+    var content by remember { mutableStateOf("") }
     Scaffold(topBar = {
         CenterAlignedTopAppBar(modifier = Modifier
             .padding(horizontal = 16.dp)
@@ -220,6 +231,16 @@ fun CheckOutScreen(
                 onChoosePayment = {
                     scope.launch {
                         navHostController.navigate(Success)
+                        notification.value.forEach {
+                         img =     it.firstProductImage
+                             title = it.firstProductName
+                             content = it.message
+                        }
+
+                        notificationService.showExpandableNotification(context = context,
+                            title = title,
+                            contentText = content,
+                            imageUrl = img,)
                     }
                     viewModel.addNotification(
                         message = "Your Order Has been placed",
@@ -299,6 +320,7 @@ fun CheckOutScreen(
         )
     }
     }
+
 
 
 

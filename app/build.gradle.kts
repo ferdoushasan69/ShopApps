@@ -135,6 +135,10 @@ dependencies {
     implementation ("com.github.kittinunf.fuel:fuel-json:2.3.1") // For JSON response handling
     implementation ("com.airbnb.android:lottie-compose:6.6.6")
 
+    implementation ("com.google.accompanist:accompanist-permissions:0.37.2")
+
+
+
 
 
 

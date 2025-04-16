@@ -87,6 +87,12 @@ class CheckoutViewModel @Inject constructor(
         fun selectShipping(id: Int) {
             _selectedShippingId.value = id
         }
+    val notifications = repository.getAllNotifications()
 
+    fun markAsRead(notificationId: Int) {
+        viewModelScope.launch {
+            repository.markAsRead(notificationId)
+        }
+    }
 
 }
