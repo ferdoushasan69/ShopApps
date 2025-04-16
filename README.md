@@ -44,7 +44,7 @@ Firebase Auth for secure sign-in
 
 🔹 UI & UX (Jetpack Compose)
 LazyColumn / LazyGrid for smooth rendering
-
+Type-Safe Navigation
 Material 3 Design System
 
 Lottie Animations, Transitions, Modern UI
